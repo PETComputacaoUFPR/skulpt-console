@@ -7,7 +7,8 @@
     <link rel="import" href="skulpt-console.html"/>
 </head>
 <body>
-    <skulpt-console>
+    <h2>Editor</h2>
+    <skulpt-console canvas="myCanvas">
 import turtle
 
 t = turtle.Turtle()
@@ -18,8 +19,9 @@ for c in ['red', 'green', 'yellow', 'blue', 'lime']:
     t.left(72)
                 
     </skulpt-console>
-    <div id="canvas"></div>
+    <div id="myCanvas"></div>
     <pre id="output"></pre>
+    <h2>Interactive Version</h2>
     <skulpt-console interactive></skulpt-console>
 </body>
 </html>
