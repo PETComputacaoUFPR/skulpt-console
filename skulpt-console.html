@@ -50,7 +50,7 @@
             }
         },
         
-        attached: function() {
+        ready: function(){
             this.toggleClass('no-display', this.interactive, this.$.run)
             if(!this.interactive) {
                 this.$.editor.textContent = this.textContent.trim();
@@ -67,6 +67,10 @@
             
             this.mirror.refresh();
             this.mirror.focus();
+        },
+        
+        attached: function() {
+            setTimeout(this.mirror.refresh(), 1000);
         },
         
         runSkulpt: function(e) {

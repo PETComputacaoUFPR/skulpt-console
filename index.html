@@ -23,5 +23,14 @@ for c in ['red', 'green', 'yellow', 'blue', 'lime']:
     <pre id="output"></pre>
     <h2>Interactive Version</h2>
     <skulpt-console interactive></skulpt-console>
+    <script>
+        var els = document.getElementsByClassName('CodeMirror');
+        for(var el in els){
+            el = parseInt(el, 10);
+            if(!isNaN(el)) {
+                els[el].CodeMirror.refresh();
+            }
+        }
+    </script>
 </body>
 </html>
