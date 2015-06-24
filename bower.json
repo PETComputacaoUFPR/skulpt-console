@@ -1,0 +1,27 @@
+{
+  "name": "skulpt-console",
+  "version": "0.0.0",
+  "authors": [
+    "Vytor Calixto <vytorcalixto@gmail.com>"
+  ],
+  "description": "Skulpt console made with Polymer",
+  "main": "skulpt-console.html",
+  "keywords": [
+    "pet",
+    "ufpr",
+    "polymer",
+    "skulpt"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~1.0.4",
+    "codemirror": "~5.3.0"
+  }
+}

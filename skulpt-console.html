@@ -1,0 +1,84 @@
+<link rel="import" href="bower_components/polymer/polymer.html" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+<script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script> 
+<script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
+
+<dom-module id="skulpt-console">
+    <style>
+        .no-display{
+            display: none;
+            opacity: 0;
+        }
+    </style>
+    <template>
+        <div id="content" class="no-display">
+            <content></content>
+        </div>
+        <textarea id="editor" cols="{{cols}}" rows="{{rows}}"></textarea>
+        <button id="run" on-click="runSkulpt"></button>
+        <!--<pre id="output"></pre>-->
+        <!--<div id="canva"></div>-->
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'skulpt-console',
+        
+        properties: {
+            cols: {
+                type: Number,
+                value: 80
+            },
+            rows: {
+                type: Number,
+                value: 20
+            },
+            interactive: {
+                type: Boolean,
+                value: false
+            }
+        },
+        
+        attached: function() {
+            this.toggleClass('no-display', this.interactive, this.$.run)
+            if(!this.interactive) {
+                this.$.editor.textContent = this.textContent.trim();
+            }
+            this.$.run.textContent = 'Run';
+        },
+        
+        runSkulpt: function(e) {
+            var prog = this.$.editor.value;
+            document.getElementById('output').innerHTML= '';
+            Sk.pre = 'output';
+            Sk.canvas = 'canvas';
+            Sk.configure({
+                output: function(text) {
+                    var mypre = document.getElementById("output"); 
+                    mypre.innerHTML = mypre.innerHTML + text; 
+                }, 
+                
+                read: function(x) {
+                    if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+                            throw "File not found: '" + x + "'";
+                    return Sk.builtinFiles["files"][x];
+                }
+            });
+            (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'canvas';
+                var myPromise = Sk.misceval.asyncToPromise(function() {
+                   return Sk.importMainWithBody("<stdin>", false, prog, true);
+                }
+            );
+                
+                myPromise.then(function(mod) {
+                   console.log('success');
+                },
+                function(err) {
+                   console.log(err);
+                   console.log(err.toString());
+                }
+            );
+        }
+    });
+</script>

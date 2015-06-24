@@ -1,0 +1,21 @@
+{
+  "name": "skulpt-console",
+  "version": "0.0.0",
+  "description": "Skulpt console made with Polymer",
+  "main": "skulpt-console.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "polymer",
+    "skulpt",
+    "pet",
+    "ufpr",
+    "codemirror"
+  ],
+  "author": "Vytor Calixto",
+  "license": "MIT",
+  "dependencies": {
+    "bower": "^1.4.1"
+  }
+}
