@@ -13,8 +13,19 @@
     "ufpr",
     "codemirror"
   ],
-  "author": "Vytor Calixto",
+  "author": "Vytor Calixto <vytorcalixto@gmail.com> (https://github.com/VytorCalixto)",
+  "contributors": [
+    "PET Computação UFPR <pet@inf.ufpr.br> (http://pet.inf.ufpr.br)"
+  ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PETComputacaoUFPR/skulpt-console.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PETComputacaoUFPR/skulpt-console/issues"
+  },
+  "homepage": "https://github.com/PETComputacaoUFPR/skulpt-console",
   "dependencies": {
     "bower": "^1.4.1"
   }

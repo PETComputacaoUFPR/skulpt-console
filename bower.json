@@ -2,10 +2,12 @@
   "name": "skulpt-console",
   "version": "0.0.0",
   "authors": [
-    "Vytor Calixto <vytorcalixto@gmail.com>"
+    "Vytor Calixto <vytorcalixto@gmail.com> (https://github.com/VytorCalixto)",
+    "PET Computação UFPR <pet@inf.ufpr.br> (http://pet.inf.ufpr.br)"
   ],
   "description": "Skulpt console made with Polymer",
   "main": "skulpt-console.html",
+  "homepage": "https://github.com/PETComputacaoUFPR/skulpt-console",
   "keywords": [
     "pet",
     "ufpr",
