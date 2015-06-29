@@ -52,6 +52,20 @@ Skulpt-Console expects the pre element do be identified as 'output' and the canv
     <div id="my-canvas"></div>
 ```
 
+### ~~Hack~~ *Fix* to make Code Mirror work properly
+You need this hack to refresh the editors on your site.
+```html
+<script>
+    var els = document.getElementsByClassName('CodeMirror');
+    for(var el in els){
+        el = parseInt(el, 10);
+        if(!isNaN(el)) {
+            els[el].CodeMirror.refresh();
+        }
+    }
+</script>
+```
+
 ## Next features:
 * [ ] Create an output element
 * [ ] Console mode (as seen on skulpt.org)
