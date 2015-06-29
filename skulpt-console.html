@@ -1,5 +1,5 @@
 <link rel="import" href="bower_components/polymer/polymer.html" />
-<script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script> 
+<script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
 <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
 <script type="text/javascript" src="bower_components/codemirror/lib/codemirror.js"></script>
 <script type="text/javascript" src="bower_components/codemirror/mode/python/python.js"></script>
@@ -26,7 +26,7 @@
 <script>
     Polymer({
         is: 'skulpt-console',
-        
+
         properties: {
             cols: {
                 type: Number,
@@ -49,13 +49,13 @@
                 value: 'canvas'
             }
         },
-        
+
         ready: function(){
             this.toggleClass('no-display', this.interactive, this.$.run)
             if(!this.interactive) {
-                this.$.editor.textContent = this.textContent.trim();
+                this.$.editor.value = this.textContent.trim();
             } else {
-                this.$.editor.textContent = 'NOT IMPLEMENTED';
+                this.$.editor.value = 'NOT IMPLEMENTED';
             }
             this.$.run.textContent = 'Run';
             this.mirror = CodeMirror.fromTextArea(this.$.editor, {
@@ -64,26 +64,27 @@
                 lineNumbers: true,
                 tabSize: 4
             });
-            
+
             this.mirror.refresh();
             this.mirror.focus();
         },
-        
+
         attached: function() {
             setTimeout(this.mirror.refresh(), 1000);
         },
-        
+
         runSkulpt: function(e) {
-            var prog = this.$.editor.value;
+            var prog = this.mirror.getValue();
             document.getElementById('output').innerHTML= '';
             Sk.pre = this.output;
             Sk.canvas = this.canvas;
             Sk.configure({
                 output: function(text) {
-                    var mypre = document.getElementById("output"); 
-                    mypre.innerHTML = mypre.innerHTML + text; 
-                }, 
-                
+                    var mypre = document.getElementById(Sk.pre);
+                    text = text.trim();
+                    mypre.innerHTML = (text)? mypre.innerHTML + text : mypre.innerHTML;
+                },
+
                 read: function(x) {
                     if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
                             throw "File not found: '" + x + "'";
@@ -95,7 +96,7 @@
                    return Sk.importMainWithBody("<stdin>", false, prog, true);
                 }
             );
-                
+
                 myPromise.then(function(mod) {
                    console.log('success');
                 },
