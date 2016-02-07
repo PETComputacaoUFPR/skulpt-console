@@ -23,6 +23,7 @@
     "tests"
   ],
   "dependencies": {
+    "skulpt": "^0.10.1",
     "polymer": "~1.0.4",
     "codemirror": "~5.3.0"
   }
